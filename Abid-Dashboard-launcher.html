@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hameem Denim Ltd Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background-image: url('https://www.hameemdenim.com/img/frontend/content/vision-31409.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      backdrop-filter: brightness(0.8);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      min-height: 100vh;
+    }
+
+    button {
+      padding: 20px 30px;
+      font-size: 18px;
+      background-color: rgba(0, 123, 255, 0.9);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: rgba(0, 86, 179, 0.9);
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      color: white;
+      text-shadow: 1px 1px 4px #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hameem Denim Ltd Dashboard</h1>
+
+  <button onclick="openLink('https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94')">Stock Report</button>
+  <button onclick="openLink('https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61')">Manpower Status</button>
+  <button onclick="openLink('https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086')">Production Report</button>
+  <button onclick="openLink('https://www.google.com/finance/quote/USD-BDT?sa=X&ved=2ahUKEwjnvJXGneOMAxUqxTgGHZ4SKtkQmY0JegQIChAv')">Cotton Price</button>
+
+  <script>
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
