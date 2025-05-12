@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hameem Denim Ltd Dashboard</title>
+  <title>Ha-Meem Denim Ltd</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 40px;
       background-image: url('https://www.hameemdenim.com/img/frontend/content/vision-31409.jpg');
@@ -15,44 +19,86 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       backdrop-filter: brightness(0.8);
+      color: white;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      flex-direction: column;
+      align-items: center;
       min-height: 100vh;
     }
 
-    button {
-      padding: 20px 30px;
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 40px;
+      font-weight: 700;
+      color: #ffeb3b;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      margin-bottom: 40px;
+      color: #f1f1f1;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .button-container button {
+      width: 100%;
+      padding: 18px 20px;
       font-size: 18px;
-      background-color: rgba(0, 123, 255, 0.9);
-      color: white;
+      font-weight: 600;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: transform 0.2s ease;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    button:hover {
-      background-color: rgba(0, 86, 179, 0.9);
+    .button-container button:hover {
+      transform: scale(1.03);
     }
 
-    h1 {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 30px;
-      color: white;
-      text-shadow: 1px 1px 4px #000;
+    .stock { background-color: #4FC3F7; }         /* Light Blue */
+    .manpower { background-color: #81C784; }      /* Light Green */
+    .production { background-color: #FFD54F; color: #333; }  /* Light Yellow */
+    .cotton { background-color: #BA68C8; }        /* Light Purple */
+
+    .arrow {
+      font-weight: bold;
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Hameem Denim Ltd Dashboard</h1>
+  <h1>Ha-Meem Denim Ltd</h1>
+  <p class="subtitle">Real-time reports and data</p>
 
-  <button onclick="openLink('https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94')">Stock Report</button>
-  <button onclick="openLink('https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61')">Manpower Status</button>
-  <button onclick="openLink('https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086')">Production Report</button>
-  <button onclick="openLink('https://www.google.com/finance/quote/USD-BDT?sa=X&ved=2ahUKEwjnvJXGneOMAxUqxTgGHZ4SKtkQmY0JegQIChAv')">Cotton Price</button>
+  <div class="button-container">
+    <button class="stock" onclick="openLink('https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94')">
+      Stock Report <span class="arrow">→</span>
+    </button>
+    <button class="manpower" onclick="openLink('https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61')">
+      Manpower Status <span class="arrow">→</span>
+    </button>
+    <button class="production" onclick="openLink('https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086')">
+      Production Report <span class="arrow">→</span>
+    </button>
+    <button class="cotton" onclick="openLink('https://www.google.com/finance/quote/USD-BDT?sa=X&ved=2ahUKEwjnvJXGneOMAxUqxTgGHZ4SKtkQmY0JegQIChAv')">
+      Cotton Price <span class="arrow">→</span>
+    </button>
+  </div>
 
   <script>
     function openLink(url) {
