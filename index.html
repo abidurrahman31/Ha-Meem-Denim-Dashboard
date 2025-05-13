@@ -3,107 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ha-Meem Denim Ltd</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  
+  <title>Ha-Meem Textile Zone</title>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 40px;
-      background-image: url('https://www.hameemdenim.com/img/frontend/content/vision-31409.jpg');
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      backdrop-filter: brightness(0.8);
-      color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: background-image 0.5s ease-in-out;
       min-height: 100vh;
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 40px;
-      font-weight: 700;
-      color: #ffeb3b;
-      text-shadow: 2px 2px 5px #000;
+      color: yellow;
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #333;
     }
 
-    p.subtitle {
-      font-size: 16px;
-      margin-bottom: 40px;
-      color: #f1f1f1;
-      text-shadow: 1px 1px 3px #000;
+    p {
+      color: white;
+      font-size: 14px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #000;
     }
 
     .button-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      width: 100%;
-      max-width: 400px;
+      gap: 15px;
     }
 
-    .button-container button {
-      width: 100%;
-      padding: 18px 20px;
+    .unit-button, .report-button, .back-button {
+      padding: 15px 30px;
       font-size: 18px;
-      font-weight: 600;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s ease;
-      color: #fff;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+      min-width: 250px;
     }
 
-    .button-container button:hover {
-      transform: scale(1.03);
+    .unit-button {
+      background-color: #007BFF;
+      color: white;
     }
 
-    .stock { background-color: #4FC3F7; }         /* Light Blue */
-    .manpower { background-color: #81C784; }      /* Light Green */
-    .production { background-color: #FFD54F; color: #333; }  /* Light Yellow */
-    .cotton { background-color: #BA68C8; }        /* Light Purple */
+    .unit-button.clicked {
+      background-color: #28a745;
+    }
 
-    .arrow {
-      font-weight: bold;
+    .report-button {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+    }
+
+    .report-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .back-button {
+      background-color: #ffc107;
+      color: black;
+      margin-top: 30px;
+    }
+
+    span.arrow {
+      margin-left: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #coming-soon {
+      color: white;
       font-size: 20px;
+      text-shadow: 1px 1px 3px #000;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Ha-Meem Denim Ltd</h1>
-  <p class="subtitle">Real-time reports and data</p>
 
-  <div class="button-container">
-    <button class="stock" onclick="openLink('https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94')">
-      Stock Report <span class="arrow">→</span>
-    </button>
-    <button class="manpower" onclick="openLink('https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61')">
-      Manpower Status <span class="arrow">→</span>
-    </button>
-    <button class="production" onclick="openLink('https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086')">
-      Production Report <span class="arrow">→</span>
-    </button>
-    <button class="cotton" onclick="openLink('https://www.google.com/finance/quote/USD-BDT?sa=X&ved=2ahUKEwjnvJXGneOMAxUqxTgGHZ4SKtkQmY0JegQIChAv')">
-      Cotton Price <span class="arrow">→</span>
-    </button>
+  <!-- Header -->
+  <h1 id="page-title">Ha-Meem Textile Zone</h1>
+  <p id="subtitle" class="hidden">Real-time reports and data</p>
+
+  <!-- Unit Buttons -->
+  <div id="unit-buttons" class="button-container">
+    <button class="unit-button" onclick="loadUnit('Ha-Meem Denim Ltd', 'https://www.hameemdenim.com/img/frontend/content/vision-31409.jpg', true)">Ha-Meem Denim Ltd <span class="arrow">➡</span></button>
+    <button class="unit-button" onclick="loadUnit('Ha-Meem Textile Ltd', 'https://hameemdenim.com/img/frontend/slider_content/thumb/SliderContent_image_191024032743.jpg', false)">Ha-Meem Textile Ltd <span class="arrow">➡</span></button>
+    <button class="unit-button" onclick="loadUnit('Ha-Meem Spinning Ltd', 'https://images.squarespace-cdn.com/content/v1/61e71cfc7350cf2a33eebdd0/98b9bfe8-83c8-462d-bfd5-01ec10425dea/Thread+Cylinders+Hanging+(1).jpg', false)">Ha-Meem Spinning Ltd <span class="arrow">➡</span></button>
+    <button class="unit-button" onclick="loadUnit('Ha-Meem Rotor Ltd', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtW4dmvDxdhHpAKVERlov2EIdwa3dbRrooRA&s', false)">Ha-Meem Rotor Ltd <span class="arrow">➡</span></button>
+    <button class="unit-button" onclick="loadUnit('Ha-Meem Recycle Ltd', 'https://media.licdn.com/dms/image/v2/C4E22AQGHmj6_s7vAGw/feedshare-shrink_800/feedshare-shrink_800/0/1677559786584?e=2147483647&v=beta&t=63kmEHl_25yaeY59JQOZhdHqgOGQNpUZJ_6heEYPby4', false)">Ha-Meem Recycle Ltd <span class="arrow">➡</span></button>
   </div>
 
+  <!-- Report Buttons (for Denim only) -->
+  <div id="report-buttons" class="button-container hidden">
+    <button class="report-button" onclick="openReport('https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94')">Stock Report <span class="arrow">➡</span></button>
+    <button class="report-button" onclick="openReport('https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61')">Manpower Status <span class="arrow">➡</span></button>
+    <button class="report-button" onclick="openReport('https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086')">Production Report <span class="arrow">➡</span></button>
+    <button class="report-button" onclick="openReport('https://www.google.com/finance/quote/USD-BDT?sa=X&ved=2ahUKEwjnvJXGneOMAxUqxTgGHZ4SKtkQmY0JegQIChAv')">Cotton Price <span class="arrow">➡</span></button>
+  </div>
+
+  <!-- Coming Soon Message (for other units) -->
+  <div id="coming-soon" class="hidden">Coming Soon...</div>
+
+  <!-- Back Button (shown in all units) -->
+  <button id="back-button" class="back-button hidden" onclick="goBack()">⬅ Back to Units</button>
+
   <script>
-    function openLink(url) {
+    const pageTitle = document.getElementById('page-title');
+    const subtitle = document.getElementById('subtitle');
+    const unitButtons = document.getElementById('unit-buttons');
+    const reportButtons = document.getElementById('report-buttons');
+    const comingSoon = document.getElementById('coming-soon');
+    const backButton = document.getElementById('back-button');
+    const body = document.body;
+
+    const defaultBg = 'https://images.pexels.com/photos/6764143/pexels-photo-6764143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
+
+    function loadUnit(unitName, bgUrl, hasReports) {
+      pageTitle.textContent = unitName;
+      body.style.backgroundImage = `url('${bgUrl}')`;
+      unitButtons.classList.add('hidden');
+      subtitle.classList.remove('hidden');
+      backButton.classList.remove('hidden');
+
+      if (hasReports) {
+        reportButtons.classList.remove('hidden');
+        comingSoon.classList.add('hidden');
+      } else {
+        reportButtons.classList.add('hidden');
+        comingSoon.classList.remove('hidden');
+      }
+    }
+
+    function goBack() {
+      pageTitle.textContent = 'Ha-Meem Textile Zone';
+      subtitle.classList.add('hidden');
+      unitButtons.classList.remove('hidden');
+      reportButtons.classList.add('hidden');
+      comingSoon.classList.add('hidden');
+      backButton.classList.add('hidden');
+      body.style.backgroundImage = `url('${defaultBg}')`;
+    }
+
+    function openReport(url) {
       window.open(url, '_blank');
     }
+
+    // Set initial background
+    body.style.backgroundImage = `url('${defaultBg}')`;
   </script>
 </body>
 </html>
+
