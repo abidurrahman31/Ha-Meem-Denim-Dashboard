@@ -3,171 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ha-Meem Textile Zone</title>
+  <title>Ha-Meem Group Dashboard</title>
   <style>
     body {
       margin: 0;
-      padding: 40px;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: background-image 0.5s ease-in-out;
+      justify-content: start;
       min-height: 100vh;
+      background-image: url('https://images.pexels.com/photos/6764143/pexels-photo-6764143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.5s ease-in-out;
+      padding: 20px;
     }
 
     h1 {
       color: yellow;
-      font-size: 36px;
+      text-shadow: 2px 2px 4px #000;
       margin-bottom: 20px;
-      font-weight: bold;
-      text-shadow: 1px 1px 3px #333;
+      font-size: 2rem;
     }
 
-    p {
-      color: white;
-      font-size: 14px;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    .button-container {
+    .units, .reports {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 15px;
+      margin: 20px 0;
     }
 
-    .unit-button, .report-button, .back-button {
-      padding: 15px 30px;
-      font-size: 18px;
+    button {
+      padding: 15px 25px;
       border: none;
       border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
+      transition: all 0.3s;
+      color: white;
       display: flex;
       align-items: center;
-      justify-content: center;
-      min-width: 250px;
+      gap: 8px;
     }
 
-    .unit-button {
+    .unit-btn {
       background-color: #007BFF;
-      color: white;
     }
 
-    .unit-button.clicked {
-      background-color: #28a745;
+    .unit-btn.selected {
+      background-color: green;
     }
 
-    .report-button {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: black;
+    .report-btn {
+      background-color: #6c757d;
     }
 
-    .report-button:hover {
-      background-color: #e0e0e0;
+    .report-btn:hover {
+      background-color: #5a6268;
     }
 
-    .back-button {
-      background-color: #ffc107;
-      color: black;
+    .back-btn {
       margin-top: 30px;
+      background-color: #dc3545;
     }
 
-    span.arrow {
-      margin-left: 10px;
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
     }
 
-    .hidden {
-      display: none;
-    }
-
-    #coming-soon {
+    .info-text {
       color: white;
-      font-size: 20px;
+      font-size: 14px;
       text-shadow: 1px 1px 3px #000;
-      margin-top: 20px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <h1>Ha-Meem Textile Zone</h1>
 
-  <!-- Header -->
-  <h1 id="page-title">Ha-Meem Textile Zone</h1>
-  <p id="subtitle" class="hidden">Real-time reports and data</p>
-
-  <!-- Unit Buttons -->
-  <div id="unit-buttons" class="button-container">
-    <button class="unit-button" onclick="loadUnit('Ha-Meem Denim Ltd', 'https://www.hameemdenim.com/img/frontend/content/vision-31409.jpg', true)">Ha-Meem Denim Ltd <span class="arrow">➡</span></button>
-    <button class="unit-button" onclick="loadUnit('Ha-Meem Textile Ltd', 'https://hameemdenim.com/img/frontend/slider_content/thumb/SliderContent_image_191024032743.jpg', false)">Ha-Meem Textile Ltd <span class="arrow">➡</span></button>
-    <button class="unit-button" onclick="loadUnit('Ha-Meem Spinning Ltd', 'https://images.squarespace-cdn.com/content/v1/61e71cfc7350cf2a33eebdd0/98b9bfe8-83c8-462d-bfd5-01ec10425dea/Thread+Cylinders+Hanging+(1).jpg', false)">Ha-Meem Spinning Ltd <span class="arrow">➡</span></button>
-    <button class="unit-button" onclick="loadUnit('Ha-Meem Rotor Ltd', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtW4dmvDxdhHpAKVERlov2EIdwa3dbRrooRA&s', false)">Ha-Meem Rotor Ltd <span class="arrow">➡</span></button>
-    <button class="unit-button" onclick="loadUnit('Ha-Meem Recycle Ltd', 'https://media.licdn.com/dms/image/v2/C4E22AQGHmj6_s7vAGw/feedshare-shrink_800/feedshare-shrink_800/0/1677559786584?e=2147483647&v=beta&t=63kmEHl_25yaeY59JQOZhdHqgOGQNpUZJ_6heEYPby4', false)">Ha-Meem Recycle Ltd <span class="arrow">➡</span></button>
+  <div class="units" id="unitButtons">
+    <button class="unit-btn" onclick="selectUnit('denim')">👖 Ha-Meem Denim Ltd</button>
+    <button class="unit-btn" onclick="selectUnit('textile')">🧵 Ha-Meem Textile Ltd</button>
+    <button class="unit-btn" onclick="selectUnit('spinning')">🧶 Ha-Meem Spinning Ltd</button>
+    <button class="unit-btn" onclick="selectUnit('rotor')">🔄 Ha-Meem Rotor Ltd</button>
+    <button class="unit-btn" onclick="selectUnit('recycle')">♻️ Ha-Meem Recycle Ltd</button>
   </div>
 
-  <!-- Report Buttons (for Denim only) -->
-  <div id="report-buttons" class="button-container hidden">
-    <button class="report-button" onclick="openReport('https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94')">Stock Report <span class="arrow">➡</span></button>
-    <button class="report-button" onclick="openReport('https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61')">Manpower Status <span class="arrow">➡</span></button>
-    <button class="report-button" onclick="openReport('https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086')">Production Report <span class="arrow">➡</span></button>
-    <button class="report-button" onclick="openReport('https://www.google.com/finance/quote/USD-BDT?sa=X&ved=2ahUKEwjnvJXGneOMAxUqxTgGHZ4SKtkQmY0JegQIChAv')">Cotton Price <span class="arrow">➡</span></button>
-  </div>
+  <div class="reports" id="reportButtons" style="display:none;"></div>
 
-  <!-- Coming Soon Message (for other units) -->
-  <div id="coming-soon" class="hidden">Coming Soon...</div>
+  <button class="back-btn" id="backButton" onclick="goBack()" style="display:none;">🔙 Back to Units</button>
 
-  <!-- Back Button (shown in all units) -->
-  <button id="back-button" class="back-button hidden" onclick="goBack()">⬅ Back to Units</button>
+  <div class="info-text" id="infoText">Select a unit to view available reports.</div>
 
   <script>
-    const pageTitle = document.getElementById('page-title');
-    const subtitle = document.getElementById('subtitle');
-    const unitButtons = document.getElementById('unit-buttons');
-    const reportButtons = document.getElementById('report-buttons');
-    const comingSoon = document.getElementById('coming-soon');
-    const backButton = document.getElementById('back-button');
-    const body = document.body;
+    const backgrounds = {
+      denim: "https://www.hameemdenim.com/img/frontend/content/vision-31409.jpg",
+      textile: "https://hameemdenim.com/img/frontend/slider_content/thumb/SliderContent_image_191024032743.jpg",
+      spinning: "https://images.squarespace-cdn.com/content/v1/61e71cfc7350cf2a33eebdd0/98b9bfe8-83c8-462d-bfd5-01ec10425dea/Thread+Cylinders+Hanging+%281%29.jpg",
+      rotor: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtW4dmvDxdhHpAKVERlov2EIdwa3dbRrooRA&s",
+      recycle: "https://media.licdn.com/dms/image/v2/C4E22AQGHmj6_s7vAGw/feedshare-shrink_800/feedshare-shrink_800/0/1677559786584?e=2147483647&v=beta&t=63kmEHl_25yaeY59JQOZhdHqgOGQNpUZJ_6heEYPby4"
+    };
 
-    const defaultBg = 'https://images.pexels.com/photos/6764143/pexels-photo-6764143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
+    const reportLinks = {
+      manpower: "https://lookerstudio.google.com/reporting/a3d59acc-9783-4e6d-868b-4a0b67ae6b61",
+      production: "https://lookerstudio.google.com/reporting/dd113d66-d94c-4aaf-a6f0-2379d08f6086",
+      stock: "https://lookerstudio.google.com/reporting/3331ef68-4e21-4762-8a2e-974cbf403e94"
+    };
 
-    function loadUnit(unitName, bgUrl, hasReports) {
-      pageTitle.textContent = unitName;
-      body.style.backgroundImage = `url('${bgUrl}')`;
-      unitButtons.classList.add('hidden');
-      subtitle.classList.remove('hidden');
-      backButton.classList.remove('hidden');
+    function selectUnit(unit) {
+      document.body.style.backgroundImage = `url(${backgrounds[unit]})`;
 
-      if (hasReports) {
-        reportButtons.classList.remove('hidden');
-        comingSoon.classList.add('hidden');
+      document.getElementById('unitButtons').style.display = 'none';
+      document.getElementById('reportButtons').style.display = 'flex';
+      document.getElementById('backButton').style.display = 'inline-block';
+      document.getElementById('infoText').textContent = `Showing reports for ${unit.replace(/^\w/, c => c.toUpperCase())}`;
+
+      document.querySelectorAll('.unit-btn').forEach(btn => btn.classList.remove('selected'));
+
+      const reportContainer = document.getElementById('reportButtons');
+      reportContainer.innerHTML = "";
+
+      const manpowerBtn = createReportButton("👨‍🏭 Manpower Status", reportLinks.manpower);
+      reportContainer.appendChild(manpowerBtn);
+
+      if (unit === "denim") {
+        reportContainer.appendChild(createReportButton("📦 Stock Report", reportLinks.stock));
+        reportContainer.appendChild(createReportButton("🏭 Production Report", reportLinks.production));
       } else {
-        reportButtons.classList.add('hidden');
-        comingSoon.classList.remove('hidden');
+        const coming = document.createElement("button");
+        coming.className = "report-btn";
+        coming.textContent = "🚧 Other Reports - Coming Soon";
+        coming.disabled = true;
+        reportContainer.appendChild(coming);
       }
+
+      // highlight selected
+      const btns = document.querySelectorAll(".unit-btn");
+      if (unit === "denim") btns[0].classList.add("selected");
+      else if (unit === "textile") btns[1].classList.add("selected");
+      else if (unit === "spinning") btns[2].classList.add("selected");
+      else if (unit === "rotor") btns[3].classList.add("selected");
+      else if (unit === "recycle") btns[4].classList.add("selected");
+    }
+
+    function createReportButton(label, link) {
+      const btn = document.createElement("button");
+      btn.className = "report-btn";
+      btn.innerHTML = `➡️ ${label}`;
+      btn.onclick = () => window.open(link, "_blank");
+      return btn;
     }
 
     function goBack() {
-      pageTitle.textContent = 'Ha-Meem Textile Zone';
-      subtitle.classList.add('hidden');
-      unitButtons.classList.remove('hidden');
-      reportButtons.classList.add('hidden');
-      comingSoon.classList.add('hidden');
-      backButton.classList.add('hidden');
-      body.style.backgroundImage = `url('${defaultBg}')`;
+      document.getElementById('unitButtons').style.display = 'flex';
+      document.getElementById('reportButtons').style.display = 'none';
+      document.getElementById('backButton').style.display = 'none';
+      document.body.style.backgroundImage = "url('https://images.pexels.com/photos/6764143/pexels-photo-6764143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')";
+      document.getElementById('infoText').textContent = "Select a unit to view available reports.";
     }
-
-    function openReport(url) {
-      window.open(url, '_blank');
-    }
-
-    // Set initial background
-    body.style.backgroundImage = `url('${defaultBg}')`;
   </script>
 </body>
 </html>
-
