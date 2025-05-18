@@ -175,7 +175,8 @@
         textile: "https://lookerstudio.google.com/reporting/a7657409-ddb4-492f-a14d-caad44c3590f",
         spinning: "https://lookerstudio.google.com/reporting/67f6efad-80f9-4880-b055-1ea4d92909bd",
         rotor: "https://lookerstudio.google.com/reporting/6e85c9c5-36f9-4e2f-b629-00cafc96f841"
-      }
+      },
+      summary10days: "https://lookerstudio.google.com/reporting/4f501588-bdda-4029-9ab6-e548a77055ce"
     };
 
     function selectUnit(unit) {
@@ -189,18 +190,19 @@
       reportContainer.classList.remove("hidden");
       backBtn.classList.remove("hidden");
       info.innerText = `📈 Showing reports for ${unit.toUpperCase()}`;
-
       reportContainer.innerHTML = '';
 
       reportContainer.appendChild(createButton("👨‍🏭 Manpower Status", reportLinks.manpower));
 
-      if (reportLinks.production[unit]) {
+      if (unit === 'denim') {
+        reportContainer.appendChild(createButton("🏭 Production Report", reportLinks.production[unit]));
+        reportContainer.appendChild(createButton("📦 Stock Report", reportLinks.stock));
+        reportContainer.appendChild(createButton("📅 10 Days Summary", reportLinks.summary10days));
+      } else if (reportLinks.production[unit]) {
         reportContainer.appendChild(createButton("🏭 Production Report", reportLinks.production[unit]));
       }
 
-      if (unit === 'denim') {
-        reportContainer.appendChild(createButton("📦 Stock Report", reportLinks.stock));
-      } else {
+      if (unit !== 'denim' && !reportLinks.production[unit]) {
         const btn = document.createElement("button");
         btn.className = "report-btn";
         btn.textContent = "🚧 More Reports Coming Soon";
@@ -227,5 +229,4 @@
   </script>
 </body>
 </html>
-
 
